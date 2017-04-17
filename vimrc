@@ -27,6 +27,14 @@ set laststatus=2  " Show bottom bar
 set cursorline    " Emphasize current line
 hi CursorLine cterm=NONE guibg=#121212
 
+" Airline settings
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#show_close_button = 0
+
 """""""""""
 " Shortcuts
 "
@@ -37,7 +45,7 @@ inoremap zz <esc>:w<cr>       " z. put line to middle
 """"""""""""""""""""""
 " Tweaks are for geeks
 "
-au! BufWritePost .vimrc,*.vim so $MYVIMRC " Reload config when changes occur
+au! BufWritePost .vimrc,*.vim so $MYVIMRC | AirlineRefresh " Reload config when changes occur
 
 au CursorMoved * checktime " Reload externally changed file
 "set autoread               " And don't hesitate about it
@@ -52,4 +60,5 @@ set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNO
 call plug#begin('$HOME/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'posva/vim-vue', { 'for': 'vue' }
+Plug 'vim-airline/vim-airline'
 call plug#end()
