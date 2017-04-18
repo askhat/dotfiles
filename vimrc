@@ -61,4 +61,6 @@ call plug#begin('$HOME/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'posva/vim-vue', { 'for': 'vue' }
 Plug 'vim-airline/vim-airline'
+Plug 'edkolev/tmuxline.vim'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
