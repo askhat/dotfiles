@@ -1,51 +1,31 @@
-"
-" Askhat  Vimrc
-" IIIrd edition
-"
-
-""""""""""""""""""""""""
-" Welcome to the present
-"
-set nocompatible  " No country for old men
-syntax on         " Bring colors to life
-set termguicolors " Even more colors
-set nowrap        " Dispalay is wide enough
-set ttyfast       " Send more characters
-set lazyredraw    " Redraw when necessary
+set nocompatible
 filetype plugin indent on
+syntax enable
 
-"""""""""""""""
-" Looks & Feels
-"
-set expandtab     " No tabs allowed
-set shiftwidth=2  " Auto indent
-set tabstop=2     " Manual indent
-set number        " Show line numbers
-set rnu           " And make it weird
-set ruler         " Cursor coordinates
-set laststatus=2  " Show bottom bar
-set cursorline    " Emphasize current line
-hi CursorLine cterm=NONE guibg=#121212
+set ttyfast
+set lazyredraw
 
-" Airline settings
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#show_splits = 0
-let g:airline#extensions#tabline#show_tab_type = 0
-let g:airline#extensions#tabline#show_close_button = 0
+set synmaxcol=180
 
-"""""""""""
-" Shortcuts
-"
-map <C-n> :NERDTreeToggle<cr> " Show tree
-noremap zz :w<cr>             " Save file
-inoremap zz <esc>:w<cr>       " z. put line to middle
+set langmenu=en_US.UTF-8
+let $LANG='en'
 
-""""""""""""""""""""""
-" Tweaks are for geeks
-"
-au! BufWritePost .vimrc,*.vim so $MYVIMRC | AirlineRefresh " Reload config when changes occur
+" Import plugins
+source $HOME/.vim/plugins.vim
+
+" Import configs
+for file in split(glob('$HOME/.vim/config/*.vim'), '\n')
+  exe 'source' file
+endfor
+
+" Reload $MYVIMRC when changes occur
+au! BufWritePost .vimrc,*.vim so $MYVIMRC | AirlineRefresh
+
+au BufRead,BufNewFile *.vue     setlocal filetype=vue
+au BufRead,BufNewFile *.js      setlocal filetype=javascript
+au BufNewFile,BufRead *_spec.rb setlocal syntax=rspec
+
+let g:used_javascript_libs = 'vue'
 
 au CursorMoved * checktime " Reload externally changed file
 "set autoread               " And don't hesitate about it
@@ -53,14 +33,26 @@ au CursorMoved * checktime " Reload externally changed file
 " Persist changes
 set undodir=$HOME/.vim/undo_history
 set undofile
+" swp and swo
+set backup
+set backupdir=~/.vim/backup
+set dir=~/.vim/backup
 
 " Comrade commando
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
-call plug#begin('$HOME/.vim/plugged')
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'posva/vim-vue', { 'for': 'vue' }
-Plug 'vim-airline/vim-airline'
-Plug 'edkolev/tmuxline.vim'
-Plug 'christoomey/vim-tmux-navigator'
-call plug#end()
+
+let g:ctrlp_custom_ignore = '\v[\/](vendor|node_modules|\.git)$'
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
+
+" let g:syntastic_pug_checkers = ['pug_lint']
+
+" let g:jsx_ext_required = 0
+let g:xml_syntax_folding = 1
