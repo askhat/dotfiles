@@ -9,8 +9,8 @@ if has('gui_running')
   set guioptions-=L
 endif
 if (&background=='light')
-  colorscheme solarized
-  let g:airline_theme='solarized'
+  " colorscheme solarized
+  " let g:airline_theme='solarized'
 endif
 if (&background=='dark')
   set termguicolors
@@ -22,6 +22,8 @@ if (&background=='dark')
   hi PmenuSel   guifg=grey50 guibg=grey10
   hi Folded     guifg=grey50 guibg=NONE
 endif
+
+hi Conceal    guifg=yellow guibg=NONE
 
 set updatetime=250
 
@@ -47,19 +49,3 @@ set relativenumber
 set list
 set listchars=tab:›\ ,trail:●,extends:#,nbsp:.
 
-" Airline settings
-let g:airline_powerline_fonts                      = 1
-let g:airline#extensions#tabline#enabled           = 1
-let g:airline#extensions#tabline#show_buffers      = 0
-let g:airline#extensions#tabline#show_splits       = 0
-let g:airline#extensions#tabline#show_tab_type     = 0
-let g:airline#extensions#tabline#show_close_button = 0
-
-" Tmuxline settings
-let g:tmuxline_preset = {
-  \'a'      : '#S',
-  \'win'    : '#I #W',
-  \'cwin'   : '#I #W',
-  \'z'      : ['#(batt)', '#(/Sy*/L*/Priv*/Apple8*/V*/C*/R*/airport -I | grep -w SSID | cut -d ":" -f 2)'],
-  \'options': {'status-justify': 'left'}
-\}

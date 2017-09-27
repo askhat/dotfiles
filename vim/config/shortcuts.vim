@@ -14,6 +14,9 @@ map t^ :tabfirst<cr>
 map t$ :tablast<cr>
 
 "" Leaders
+" Insert console.log()
+map <leader>cl :statement<cr><cr>console.log(
+imap <leader>cl <cr>console.log(
 " Insert pry binding
 " TODO check filetype and use appropriate statement
 map  <leader>pp :startinsert<cr><cr>binding.pry<esc>
