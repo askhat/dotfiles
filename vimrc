@@ -11,7 +11,9 @@ set langmenu=en_US.UTF-8
 let $LANG='en'
 
 " Import plugins
-source $HOME/.vim/plugins.vim
+call plug#begin('$HOME/.vim/plugged')
+  source $HOME/.vim/plugins.vim
+call plug#end()
 
 " Import configs
 for file in split(glob('$HOME/.vim/config/*.vim'), '\n')
