@@ -11,10 +11,6 @@ tmp/
 *.swp
 *.swo
 
-# Editors
-.idea/
-.vscode/
-
 # Ruby
 vendor/bundle/
 .bundle/
@@ -22,3 +18,4 @@ vendor/bundle/
 # JS
 node_modules/
 npm-debug.log*
+yarn-error.log*
