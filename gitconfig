@@ -1,12 +1,24 @@
 [user]
-	name = Askhat Bikmetov
-	email = inbox@askhat.xyz
+  name = Askhat Bikmetov
+  email = lolborgini@gmail.com
 [core]
-	excludesfile = /Users/askhat/.gitignore_global
+  excludesfile = /Users/askhat/.gitignore_global
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
-  diff = auto
-  status = auto
-  branch = auto
-  interactive = auto
-  ui = true
+  diff = always
+  status = always
+  branch = always
+  interactive = always
+  ui = always
   pager = true
+[blame]
+  date = relative
+[alias]
+  discard = checkout --
+[difftool "sourcetree"]
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+[mergetool "sourcetree"]
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
+[commit]
+  template = /Users/askhat/.stCommitMsg
